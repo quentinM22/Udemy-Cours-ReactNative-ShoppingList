@@ -11,12 +11,14 @@ import {
 import Products from "./components/Products"
 import AddProducts from "./components/AddProducts"
 import ModalDelete from "./components/Modal"
+import DissMissKeyboard from "./components/DissMissKeyboard"
 
 export default function App() {
 	const [myProducts, setMyProduct] = useState([])
   const [error, setError] = useState(false)
   const [toggle, setToggle] = useState(false)
   const [deleteDis, setDeletedis] =  useState(true)
+
   const submitHandler = (product) => {
     if(product.length >= 2 && product.length <= 15 ){
       const idString = Date.now().toString()
@@ -40,6 +42,7 @@ useEffect(() => {
   }
 }, [myProducts]);
 	return (
+    <DissMissKeyboard>
 		<View style={styles.container}>
       <ModalDelete 
         toggle={toggle}
@@ -58,6 +61,7 @@ useEffect(() => {
         idString={item.key}
         /> } />
 		</View>
+    </DissMissKeyboard>
 	)
 }
 
@@ -73,6 +77,7 @@ const styles = StyleSheet.create({
 		padding: 40,
 		paddingTop: 60,
     marginBottom: 60,
+    flex: 1,
 	},
 	intputContainer: {
 		flexDirection: "row",
