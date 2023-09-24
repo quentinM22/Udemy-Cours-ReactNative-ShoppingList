@@ -13,7 +13,7 @@ const handlePress = () => {
     setProduct('')
 }
 useEffect(() => {
-    if (product.length >= 2 && product.length <= 15 ) {
+    if (product.length >= 2 && product.length <= 15) {
         setBtnDis(false)
     }else{
         setBtnDis(true)
@@ -23,6 +23,8 @@ useEffect(() => {
     <View >
     <View style={styles.intputContainer}>
          <TextInput
+         multiline
+         maxLength={15}
         style={[styles.textInput, error ? styles.errorBorderColor : styles.defaultBorderColor ]}
         placeholder="Nouveau Produit"
         onChangeText={inputHandler}
@@ -30,8 +32,6 @@ useEffect(() => {
     />
     <Button title="Valider" onPress={handlePress} color={ btnDis ?  "lightgray" : "#add8e6"} disabled={btnDis}/>
     </View>
-    {error && <Text style={styles.msgError}>Minimum 2 caractères</Text> }
-   
 </View>
   )
 }
