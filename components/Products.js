@@ -4,6 +4,7 @@ import {
 	StyleSheet,
   TouchableOpacity,
   Button,
+  Image,
 } from "react-native"
 import React, { useState } from "react"
 
@@ -17,11 +18,18 @@ const Products = ({ name, deleteFunction, idString }) => {
 					<Text style={[styles.element, styles.textLine]}>{name}  </Text>
 				)}
 				
-				<TouchableOpacity activeOpacity={ 0.6} style={{backgroundColor:'lightgreen',paddingHorizontal: 15, height:100, justifyContent:"center"}} onPress={()=> setCheck(!check)}>
-					<Text style={{fontSize:20}}>&#10003;</Text>
+				<TouchableOpacity activeOpacity={ 0.6} style={{paddingHorizontal: 15, height:100, justifyContent:"center"}} onPress={()=> setCheck(!check)}>
+				<Image 
+					source={require('../assets/check.png')}
+					style={styles.tinyLogo}
+					/>
 					</TouchableOpacity>
-				<TouchableOpacity activeOpacity={ 0.6}  onPress={() =>deleteFunction(idString)} style={{backgroundColor:'lightcoral',paddingHorizontal: 20, height:100, justifyContent:"center"}}>
-					<Text style={{fontSize:20}}>&#x2717;</Text>
+				<TouchableOpacity activeOpacity={ 0.6}  onPress={() =>deleteFunction(idString)} style={{paddingHorizontal: 20, height:100, justifyContent:"center"}}>
+					{/* <Text style={{fontSize:20}}>&#x2717;</Text> */}
+					<Image 
+					source={require('../assets/cross.png')}
+					style={styles.tinyLogo}
+					/>
 					</TouchableOpacity>
 			</View>
 	)
@@ -44,6 +52,10 @@ const styles = StyleSheet.create({
 	},
 	textLine:{
 		textDecorationLine:'line-through',
-	}
+	},
+	tinyLogo: {
+		width: 25,
+		height: 25,
+	  },
 })
 export default Products
