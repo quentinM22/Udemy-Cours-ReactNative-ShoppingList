@@ -13,7 +13,7 @@ const handlePress = () => {
     setProduct('')
 }
 useEffect(() => {
-    if (product.length >= 2) {
+    if (product.length >= 2 && product.length <= 15 ) {
         setBtnDis(false)
     }else{
         setBtnDis(true)
@@ -37,7 +37,7 @@ useEffect(() => {
 }
 const styles = StyleSheet.create({
 	intputContainer: {
-		flexDirection: "row",
+		flexDirection: "column",
     marginBottom: 10
 	},
 	textInput: {

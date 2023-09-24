@@ -18,7 +18,7 @@ export default function App() {
   const [toggle, setToggle] = useState(false)
   const [deleteDis, setDeletedis] =  useState(true)
   const submitHandler = (product) => {
-    if(product.length >= 2 ){
+    if(product.length >= 2 && product.length <= 14 ){
       const idString = Date.now().toString()
       setMyProduct((currentMyProduct) => [{key: idString, name: product},...currentMyProduct])
       setError(false)
@@ -48,7 +48,7 @@ useEffect(() => {
       />
       <Text style={styles.title}>ShoppingList</Text>
         <AddProducts submitHandler={submitHandler} error={error} />
-        <Button title="Supprimer Tout" onPress={() => setToggle(true)} disabled={deleteDis}/>
+        <Button title="Supprimer Tout" onPress={() => setToggle(true)} disabled={deleteDis} color={"lightcoral"}/>
         <FlatList
           data={myProducts}
           renderItem={({item})=> 
