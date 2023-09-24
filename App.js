@@ -18,7 +18,7 @@ export default function App() {
   const [toggle, setToggle] = useState(false)
   const [deleteDis, setDeletedis] =  useState(true)
   const submitHandler = (product) => {
-    if(product.length >= 2 && product.length <= 14 ){
+    if(product.length >= 2 && product.length <= 15 ){
       const idString = Date.now().toString()
       setMyProduct((currentMyProduct) => [{key: idString, name: product},...currentMyProduct])
       setError(false)
