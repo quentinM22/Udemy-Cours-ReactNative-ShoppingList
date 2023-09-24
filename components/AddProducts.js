@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 9,
 		fontSize: 18,
 		flexGrow: 1,
+        backgroundColor: 'white'
 	},
     errorBorderColor:{
         borderColor: 'lightcoral'

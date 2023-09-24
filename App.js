@@ -3,6 +3,7 @@ import {
   Alert,
   Button,
   FlatList,
+	ImageBackground,
 	StyleSheet,
 	Text,
 	View
@@ -43,7 +44,10 @@ useEffect(() => {
 }, [myProducts]);
 	return (
     <DissMissKeyboard>
-		<View style={styles.container}>
+		<ImageBackground 
+    style={styles.container}
+    source={require('./assets/background-630129_1280.jpg')}
+    >
       <ModalDelete 
         toggle={toggle}
         setToggle={setToggle}
@@ -60,7 +64,7 @@ useEffect(() => {
         deleteFunction={deleteFunction}
         idString={item.key}
         /> } />
-		</View>
+		</ImageBackground>
     </DissMissKeyboard>
 	)
 }
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     margin: 15,
-    color: 'lightblue',
+    color: 'skyblue',
     fontWeight: 'bold'
   },
 	container: {
@@ -78,26 +82,5 @@ const styles = StyleSheet.create({
 		paddingTop: 60,
     marginBottom: 60,
     flex: 1,
-	},
-	intputContainer: {
-		flexDirection: "row",
-    marginBottom: 10
-	},
-	textInput: {
-		borderColor: "gray",
-		borderWidth: 1,
-		padding: 5,
-		paddingHorizontal: 9,
-		fontSize: 18,
-		flexGrow: 1,
-	},
-	items: {
-		marginTop: 10,
-	},
-	element: {
-		marginVertical: 5,
-		padding: 20,
-		fontSize: 18,
-		backgroundColor: "lightblue",
-	},
+	}
 })
