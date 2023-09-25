@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 15,
     color: 'skyblue',
-    fontFamily: 'croissantOne'
+    fontFamily: 'croissantOne',
   },
 	container: {
 		padding: 40,
