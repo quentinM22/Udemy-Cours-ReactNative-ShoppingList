@@ -1,24 +1,36 @@
 import { useEffect, useState } from "react"
 import {
-  Alert,
   Button,
   FlatList,
-	ImageBackground,
+	Image,
 	StyleSheet,
 	Text,
 	View
 } from "react-native"
+import AppLoading from "expo-app-loading"
 
 import Products from "./components/Products"
 import AddProducts from "./components/AddProducts"
 import ModalDelete from "./components/Modal"
 import DissMissKeyboard from "./components/DissMissKeyboard"
 
+
+import Color from './constants/colors'
+import { useFonts, Roboto_500Medium } from "@expo-google-fonts/roboto"
+
+
 export default function App() {
 	const [myProducts, setMyProduct] = useState([])
   const [error, setError] = useState(false)
   const [toggle, setToggle] = useState(false)
   const [deleteDis, setDeletedis] =  useState(true)
+ 
+  const [fontLoad, errorLoad] = useFonts({
+    "RobotoMedium": Roboto_500Medium,
+    'roboto-bold': require('./assets/fonts/Roboto-Bold.ttf'),
+    'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
+    'croissantOne': require('./assets/fonts/CroissantOne-Regular.ttf')
+  })
 
   const submitHandler = (product) => {
     if(product.length >= 2 && product.length <= 15 ){
@@ -42,20 +54,29 @@ useEffect(() => {
     setDeletedis(false)
   }
 }, [myProducts]);
-	return (
+
+	return  !fontLoad ? (
+  <AppLoading />
+  ):(
     <DissMissKeyboard>
-		<ImageBackground 
+		<View  
     style={styles.container}
-    source={require('./assets/background-630129_1280.jpg')}
     >
       <ModalDelete 
         toggle={toggle}
         setToggle={setToggle}
         setMyProduct={setMyProduct}
       />
+      <View style={styles.header}> 
       <Text style={styles.title}>ShoppingList</Text>
+      <Image 
+					source={require('./assets/pngegg.png')}
+					style={styles.tinyLogo}
+					/>
+      </View>
+      
         <AddProducts submitHandler={submitHandler} error={error} />
-        <Button title="Supprimer Tout" onPress={() => setToggle(true)} disabled={deleteDis} color={"lightcoral"}/>
+        <Button title="Supprimer Tout" onPress={() => setToggle(true)} disabled={deleteDis} color={Color.danger}/>
         <FlatList
           data={myProducts}
           renderItem={({item})=> 
@@ -64,23 +85,34 @@ useEffect(() => {
         deleteFunction={deleteFunction}
         idString={item.key}
         /> } />
-		</ImageBackground>
+		</View>
     </DissMissKeyboard>
 	)
 }
 
 const styles = StyleSheet.create({
   title:{
+    width: '100%',
     fontSize: 30,
     textAlign: 'center',
     margin: 15,
     color: 'skyblue',
-    fontWeight: 'bold'
+    fontFamily: 'croissantOne'
   },
 	container: {
 		padding: 40,
 		paddingTop: 60,
-    marginBottom: 60,
+    marginBottom: 5,
     flex: 1,
-	}
+	},
+  header:{
+    position: 'relative',
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  tinyLogo: {
+    position: 'absolute',
+		width: 50,
+		height: 50,
+	  },
 })

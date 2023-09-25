@@ -1,5 +1,6 @@
 import { View, Text, Button, Modal, StyleSheet } from 'react-native'
 import React from 'react'
+import Color from '../constants/colors'
 
 const ModalDelete = ({toggle, setToggle, setMyProduct}) => {
     const handlerDelete = () => {
@@ -15,10 +16,10 @@ const ModalDelete = ({toggle, setToggle, setMyProduct}) => {
      onRequestClose={()=> setToggle(true)}>
      <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-        <Text style={{fontSize: 18}}>Voulez-vous tout supprimer?</Text>
+        <Text style={{fontSize: 18, fontFamily: 'roboto-regular'}}>Voulez-vous tout supprimer?</Text>
         <View style={styles.btnModalContainer}>
-        <Button title='Oui' onPress={handlerDelete} color={'lightgreen'}/>
-        <Button title='Non' onPress={()=> setToggle(false)} color={'lightcoral'}/>
+        <Button title='Oui' onPress={handlerDelete} color={Color.success}/>
+        <Button title='Non' onPress={()=> setToggle(false)} color={Color.danger}/>
         </View>
         </View>
      </View>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     modalContent:{
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: Color.white,
         padding: 25,
         borderRadius: 15
     },

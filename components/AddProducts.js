@@ -1,11 +1,14 @@
 import { View, StyleSheet, TextInput, Button, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
+import Color from '../constants/colors'
+
 const AddProducts = ({submitHandler, error}) => {
     const [product, setProduct] = useState('')
     const [btnDis, setBtnDis] = useState(true)
     const inputHandler = (val) => {
-		setProduct(val)
+        const regex = /[^a-z]/gi
+		setProduct(val.replace(regex, ''))
 	}
 	
 const handlePress = () => {
@@ -46,18 +49,19 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 9,
 		fontSize: 18,
 		flexGrow: 1,
-        backgroundColor: 'white'
+        backgroundColor: Color.white,
+        fontFamily: 'roboto-regular'
 	},
     errorBorderColor:{
-        borderColor: 'lightcoral'
+        borderColor: Color.danger
     },
     defaultBorderColor:{
-        borderColor: 'lightgray'
+        borderColor: Color.gray
     },
     msgError:{
-        color: 'lightcoral',
+        color: Color.danger,
         fontSize: 10,
-        fontWeight: 'bold'
+        fontFamily: 'roboto-bold'
     },
 })
 

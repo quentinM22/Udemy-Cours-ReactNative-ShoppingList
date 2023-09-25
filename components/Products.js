@@ -7,13 +7,14 @@ import {
   Image,
 } from "react-native"
 import React, { useState } from "react"
+import Color from '../constants/colors'
 
 const Products = ({ name, deleteFunction, idString }) => {
 	const [check, setCheck] = useState(false)
 	return (
 			<View style={styles.items}>
 				{!check ? (
-					<Text style={[styles.element]}>{name}  </Text>
+					<Text style={[styles.element]}>{name}</Text>
 				): (
 					<Text style={[styles.element, styles.textLine]}>{name}  </Text>
 				)}
@@ -40,22 +41,22 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		marginTop: 10,
-		backgroundColor: "lightblue"
+		backgroundColor: Color.info
 	},
 	element: {
 		flexGrow:1,
 		marginVertical: 5,
 		padding: 20,
 		fontSize: 18,
-
-		
+		fontFamily: 'roboto-bold'
 	},
 	textLine:{
 		textDecorationLine:'line-through',
 	},
 	tinyLogo: {
-		width: 25,
-		height: 25,
+		width: 30,
+		height: 30,
+		padding: 10
 	  },
 })
 export default Products
