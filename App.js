@@ -9,6 +9,8 @@ import {
 } from "react-native"
 import AppLoading from "expo-app-loading"
 
+import { useFonts, Roboto_500Medium } from "@expo-google-fonts/roboto"
+
 import Products from "./components/Products"
 import AddProducts from "./components/AddProducts"
 import ModalDelete from "./components/Modal"
@@ -16,7 +18,7 @@ import DissMissKeyboard from "./components/DissMissKeyboard"
 
 
 import Color from './constants/colors'
-import { useFonts, Roboto_500Medium } from "@expo-google-fonts/roboto"
+
 
 
 export default function App() {
@@ -27,9 +29,9 @@ export default function App() {
  
   const [fontLoad, errorLoad] = useFonts({
     "RobotoMedium": Roboto_500Medium,
-    'roboto-bold': require('./assets/fonts/Roboto-Bold.ttf'),
-    'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
-    'croissantOne': require('./assets/fonts/CroissantOne-Regular.ttf')
+    "roboto-bold": require('./assets/fonts/Roboto-Bold.ttf'),
+    "roboto-regular": require('./assets/fonts/Roboto-Regular.ttf'),
+    "croissantOne": require('./assets/fonts/CroissantOne-Regular.ttf')
   })
 
   const submitHandler = (product) => {
