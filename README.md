@@ -1,6 +1,6 @@
 # ShoppingList
 
-(Découverte de React-Native)
+(Découverte de React-Native - cours Udemy)
  
 Création d'une App Mobile - React-Native
 
